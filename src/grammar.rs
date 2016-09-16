@@ -34,9 +34,10 @@
 //! }
 //! ```
 
-/// A `Program` is either
+/// A `Program` for the cockroach brain
 ///
-/// 1. `Forward` followed by a `Program`
+/// It is either
+/// 1. `Forward` followed by a `Program
 /// 2. `Backward` followed by a `Program`
 /// 3. nothing, this is signified by `Stop`
 pub enum Program {
