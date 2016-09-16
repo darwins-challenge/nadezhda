@@ -7,5 +7,8 @@
 //! See [fly me to the moon](https://leanpub.com/flymetothemoon) for a extended
 //! description.
 
+extern crate rand;
+
 pub mod grammar;
 pub mod dsl;
+pub mod random;
