@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["grammar","Nadezhda's brain control program grammar"]]});
+initSidebarItems({"macro":[["backward!",""],["forward!",""],["stop!",""]],"mod":[["dsl","A Domain Specific Language (DSL) for Abstract Syntax Trees (AST)."],["grammar","Nadezhda's brain control program grammar"],["random","Create random Abstract Syntax Trees (AST) for Nadezhda grammar."]]});

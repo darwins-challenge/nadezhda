@@ -92,6 +92,7 @@
 <span id="48">48</span>
 <span id="49">49</span>
 <span id="50">50</span>
+<span id="51">51</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Nadezhda&#39;s brain control program grammar</span>
 <span class='doccomment'>//!</span>
@@ -135,6 +136,7 @@
 <span class='doccomment'>/// 1. `Forward` followed by a `Program</span>
 <span class='doccomment'>/// 2. `Backward` followed by a `Program`</span>
 <span class='doccomment'>/// 3. nothing, this is signified by `Stop`</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>PartialEq</span>, <span class='ident'>Eq</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Program</span> {
     <span class='doccomment'>/// forward alternative of the grammar</span>
     <span class='ident'>Forward</span>(<span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>Program</span><span class='op'>&gt;</span>),
