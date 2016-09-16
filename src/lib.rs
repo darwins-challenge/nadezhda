@@ -8,3 +8,4 @@
 //! description.
 
 pub mod grammar;
+pub mod dsl;

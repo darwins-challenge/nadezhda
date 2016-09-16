@@ -40,6 +40,7 @@
 /// 1. `Forward` followed by a `Program
 /// 2. `Backward` followed by a `Program`
 /// 3. nothing, this is signified by `Stop`
+#[derive(Debug, PartialEq, Eq)]
 pub enum Program {
     /// forward alternative of the grammar
     Forward(Box<Program>),
