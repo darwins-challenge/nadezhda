@@ -6,3 +6,5 @@
 //!
 //! See [fly me to the moon](https://leanpub.com/flymetothemoon) for a extended
 //! description.
+
+pub mod grammar;
