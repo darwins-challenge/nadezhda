@@ -1,4 +1,4 @@
-# nadezhda
+# nadezhda [![Build Status](https://travis-ci.org/darwins-challenge/nadezhda.svg?branch=master)](https://travis-ci.org/darwins-challenge/nadezhda)
 A robotic space cockroach with a computer controlled brain.
 
 ## Description
