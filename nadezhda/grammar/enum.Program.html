@@ -47,23 +47,20 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-6' class='srclink' href='../../src/nadezhda/src/grammar.rs.html#42-49' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-5' class='srclink' href='../../src/nadezhda/src/grammar.rs.html#43-50' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Program {
     Forward(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../nadezhda/grammar/enum.Program.html' title='nadezhda::grammar::Program'>Program</a>&gt;),
     Backward(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../nadezhda/grammar/enum.Program.html' title='nadezhda::grammar::Program'>Program</a>&gt;),
     Stop,
-}</pre><div class='docblock'><p>A <code>Program</code> is either</p>
+}</pre><div class='docblock'><p>A <code>Program</code> for the cockroach brain</p>
 
-<ol>
-<li><code>Forward</code> followed by a <code>Program</code></li>
-<li><code>Backward</code> followed by a <code>Program</code></li>
-<li>nothing, this is signified by <code>Stop</code></li>
-</ol>
+<p>It is either
+1. <code>Forward</code> followed by a <code>Program 2.</code>Backward<code>followed by a</code>Program<code>3. nothing, this is signified by</code>Stop`</p>
 </div><h2 class='variants'>Variants</h2>
-<table class='variants_table'><tr><td id='variant.Forward'><code>Forward</code></td><td><div class='docblock'><p>forward alternative of the grammar</p>
-</div></td><td></td></tr><tr><td id='variant.Backward'><code>Backward</code></td><td><div class='docblock'><p>backward alternative of the grammar</p>
-</div></td><td></td></tr><tr><td id='variant.Stop'><code>Stop</code></td><td><div class='docblock'><p>empty alternative of the grammar</p>
-</div></td><td></td></tr></table></section>
+<span id='variant.Forward' class='variant'><code>Forward(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../nadezhda/grammar/enum.Program.html' title='nadezhda::grammar::Program'>Program</a>&gt;)</code></span><div class='docblock'><p>forward alternative of the grammar</p>
+</div><span id='variant.Backward' class='variant'><code>Backward(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='enum' href='../../nadezhda/grammar/enum.Program.html' title='nadezhda::grammar::Program'>Program</a>&gt;)</code></span><div class='docblock'><p>backward alternative of the grammar</p>
+</div><span id='variant.Stop' class='variant'><code>Stop</code></span><div class='docblock'><p>empty alternative of the grammar</p>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -86,6 +83,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Program","A `Program` is either"]]});
+initSidebarItems({"enum":[["Program","A `Program` for the cockroach brain"]]});
