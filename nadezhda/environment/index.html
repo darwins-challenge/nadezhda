@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `backward!` macro in crate `nadezhda`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, backward!">
+    <meta name="description" content="API documentation for the Rust `environment` mod in crate `nadezhda`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, environment">
 
-    <title>nadezhda::backward! - Rust</title>
+    <title>nadezhda::environment - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
@@ -28,7 +28,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='index.html'>nadezhda</a></p><script>window.sidebarCurrent = {name: 'backward!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>nadezhda</a></p><script>window.sidebarCurrent = {name: 'environment', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -42,17 +42,27 @@
         </form>
     </nav>
 
-    <section id='main' class="content macro">
-<h1 class='fqn'><span class='in-band'><a href='index.html'>nadezhda</a>::<wbr><a class='macro' href=''>backward!</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>nadezhda</a>::<wbr><a class='mod' href=''>environment</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-106' class='srclink' href='../src/nadezhda/src/dsl.rs.html#17-19' title='goto source code'>[src]</a></span></h1>
-<pre class='rust macro'>
-<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>backward</span> {
-    (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>program</span>: <span class='ident'>expr</span>) <span class='op'>=&gt;</span> { ... };
-}</pre>
-</section>
+               </span><a id='src-56' class='srclink' href='../../src/nadezhda/src/environment.rs.html#1-43' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Keeps track of the cockroach state</p>
+
+<p>The environment is responsible for keeping track of the world the cockroach
+lives in. The environment consists of the location of the cockroach, which
+start out at the origin. And the location of a pile of food, which the
+cockroach is interested in.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Environment.html'
+                                  title='nadezhda::environment::Environment'>Environment</a></td>
+                           <td class='docblock short'>
+                                <p>The environment the cockroach finds herself</p>
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -106,13 +116,13 @@
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "nadezhda";
         window.playgroundUrl = "";
     </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
     
-    <script defer src="../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

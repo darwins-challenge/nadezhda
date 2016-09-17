@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Environment","The environment the cockroach finds herself"]]});
