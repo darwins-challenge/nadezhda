@@ -9,4 +9,7 @@ food.
 > The cockroach moves along a line. Each turn it either takes a step forward,
 > takes a step backwards, or stops.
 
+See the [documentation][] for a detailed description. 
+
 [book]: https://leanpub.com/flymetothemoon
+[documentation]: https://darwins-challenge.github.io/nadezhda/
