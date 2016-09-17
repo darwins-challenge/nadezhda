@@ -13,4 +13,4 @@ pub mod grammar;
 pub mod dsl;
 pub mod random;
 pub mod environment;
-pub mod simulate;
+pub mod evaluate;

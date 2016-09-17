@@ -12,13 +12,13 @@
 //!
 //! use nadezhda::grammar::Program;
 //! use nadezhda::environment::Environment;
-//! use nadezhda::simulate::Executable;
+//! use nadezhda::evaluate::Evaluator;
 //!
 //! fn main() {
 //!     let program: Program = forward!(forward!(forward!(stop!())));
 //!     let start: Environment = Environment::new(5);
 //!
-//!     let finish: Environment = program.execute_on(start);
+//!     let finish: Environment = program.evaluate_on(start);
 //!
 //!     assert_eq!(finish, Environment {
 //!         cockroach_location: 3,
@@ -31,28 +31,28 @@ use super::environment::Environment;
 use super::grammar::Program;
 
 /// The contract how a cockroach can change an environment
-pub trait Executable {
+pub trait Evaluator {
     /// An execution is performed on ab `Environment`. It will return the
     /// `Environment` which result in executing this `Executable`.
-    fn execute_on(&self, environment: Environment) -> Environment;
+    fn evaluate_on(&self, environment: Environment) -> Environment;
 }
 
-impl Executable for Program {
-    fn execute_on(&self, environment: Environment) -> Environment {
+impl Evaluator for Program {
+    fn evaluate_on(&self, environment: Environment) -> Environment {
         match *self {
             Program::Forward(ref contained_program) => {
                 let next_environment =
                 Environment { cockroach_location : environment.cockroach_location + 1,
                   .. environment
                 };
-                contained_program.execute_on(next_environment)
+                contained_program.evaluate_on(next_environment)
             },
             Program::Backward(ref contained_program) => {
                 let next_environment =
                 Environment { cockroach_location : environment.cockroach_location - 1,
                   .. environment
                 };
-                contained_program.execute_on(next_environment)
+                contained_program.evaluate_on(next_environment)
             },
             Program::Stop => {
                 Environment { .. environment }
@@ -72,7 +72,7 @@ mod tests {
         let program: Program = Program::Stop;
         let environment: Environment = Environment::new(5);
 
-        let result: Environment = program.execute_on(environment);
+        let result: Environment = program.evaluate_on(environment);
 
         assert_eq!(result, Environment {
             cockroach_location: 0,
@@ -85,7 +85,7 @@ mod tests {
         let program: Program = Program::Forward(Box::new(Program::Stop));
         let environment: Environment = Environment::new(5);
 
-        let result: Environment = program.execute_on(environment);
+        let result: Environment = program.evaluate_on(environment);
 
         assert_eq!(result, Environment {
             cockroach_location: 1,
@@ -98,7 +98,7 @@ mod tests {
         let program: Program = Program::Backward(Box::new(Program::Stop));
         let environment: Environment = Environment::new(5);
 
-        let result: Environment = program.execute_on(environment);
+        let result: Environment = program.evaluate_on(environment);
 
         assert_eq!(result, Environment {
             cockroach_location: -1,
