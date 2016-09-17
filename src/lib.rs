@@ -12,3 +12,4 @@ extern crate rand;
 pub mod grammar;
 pub mod dsl;
 pub mod random;
+pub mod environment;
