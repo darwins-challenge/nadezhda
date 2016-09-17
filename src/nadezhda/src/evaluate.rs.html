@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/simulate.rs`.">
+    <meta name="description" content="Source to the Rust file `src/evaluate.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
-    <title>simulate.rs.html -- source</title>
+    <title>evaluate.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../../main.css">
@@ -165,13 +165,13 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! use nadezhda::grammar::Program;</span>
 <span class='doccomment'>//! use nadezhda::environment::Environment;</span>
-<span class='doccomment'>//! use nadezhda::simulate::Executable;</span>
+<span class='doccomment'>//! use nadezhda::evaluate::Evaluator;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! fn main() {</span>
 <span class='doccomment'>//!     let program: Program = forward!(forward!(forward!(stop!())));</span>
 <span class='doccomment'>//!     let start: Environment = Environment::new(5);</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//!     let finish: Environment = program.execute_on(start);</span>
+<span class='doccomment'>//!     let finish: Environment = program.evaluate_on(start);</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     assert_eq!(finish, Environment {</span>
 <span class='doccomment'>//!         cockroach_location: 3,</span>
@@ -184,28 +184,28 @@
 <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>grammar</span>::<span class='ident'>Program</span>;
 
 <span class='doccomment'>/// The contract how a cockroach can change an environment</span>
-<span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>Executable</span> {
+<span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>Evaluator</span> {
     <span class='doccomment'>/// An execution is performed on ab `Environment`. It will return the</span>
     <span class='doccomment'>/// `Environment` which result in executing this `Executable`.</span>
-    <span class='kw'>fn</span> <span class='ident'>execute_on</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>environment</span>: <span class='ident'>Environment</span>) <span class='op'>-&gt;</span> <span class='ident'>Environment</span>;
+    <span class='kw'>fn</span> <span class='ident'>evaluate_on</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>environment</span>: <span class='ident'>Environment</span>) <span class='op'>-&gt;</span> <span class='ident'>Environment</span>;
 }
 
-<span class='kw'>impl</span> <span class='ident'>Executable</span> <span class='kw'>for</span> <span class='ident'>Program</span> {
-    <span class='kw'>fn</span> <span class='ident'>execute_on</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>environment</span>: <span class='ident'>Environment</span>) <span class='op'>-&gt;</span> <span class='ident'>Environment</span> {
+<span class='kw'>impl</span> <span class='ident'>Evaluator</span> <span class='kw'>for</span> <span class='ident'>Program</span> {
+    <span class='kw'>fn</span> <span class='ident'>evaluate_on</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>environment</span>: <span class='ident'>Environment</span>) <span class='op'>-&gt;</span> <span class='ident'>Environment</span> {
         <span class='kw'>match</span> <span class='op'>*</span><span class='self'>self</span> {
             <span class='ident'>Program</span>::<span class='ident'>Forward</span>(<span class='kw-2'>ref</span> <span class='ident'>contained_program</span>) <span class='op'>=&gt;</span> {
                 <span class='kw'>let</span> <span class='ident'>next_environment</span> <span class='op'>=</span>
                 <span class='ident'>Environment</span> { <span class='ident'>cockroach_location</span> : <span class='ident'>environment</span>.<span class='ident'>cockroach_location</span> <span class='op'>+</span> <span class='number'>1</span>,
                   .. <span class='ident'>environment</span>
                 };
-                <span class='ident'>contained_program</span>.<span class='ident'>execute_on</span>(<span class='ident'>next_environment</span>)
+                <span class='ident'>contained_program</span>.<span class='ident'>evaluate_on</span>(<span class='ident'>next_environment</span>)
             },
             <span class='ident'>Program</span>::<span class='ident'>Backward</span>(<span class='kw-2'>ref</span> <span class='ident'>contained_program</span>) <span class='op'>=&gt;</span> {
                 <span class='kw'>let</span> <span class='ident'>next_environment</span> <span class='op'>=</span>
                 <span class='ident'>Environment</span> { <span class='ident'>cockroach_location</span> : <span class='ident'>environment</span>.<span class='ident'>cockroach_location</span> <span class='op'>-</span> <span class='number'>1</span>,
                   .. <span class='ident'>environment</span>
                 };
-                <span class='ident'>contained_program</span>.<span class='ident'>execute_on</span>(<span class='ident'>next_environment</span>)
+                <span class='ident'>contained_program</span>.<span class='ident'>evaluate_on</span>(<span class='ident'>next_environment</span>)
             },
             <span class='ident'>Program</span>::<span class='ident'>Stop</span> <span class='op'>=&gt;</span> {
                 <span class='ident'>Environment</span> { .. <span class='ident'>environment</span> }
@@ -225,7 +225,7 @@
         <span class='kw'>let</span> <span class='ident'>program</span>: <span class='ident'>Program</span> <span class='op'>=</span> <span class='ident'>Program</span>::<span class='ident'>Stop</span>;
         <span class='kw'>let</span> <span class='ident'>environment</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>Environment</span>::<span class='ident'>new</span>(<span class='number'>5</span>);
 
-        <span class='kw'>let</span> <span class='ident'>result</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>program</span>.<span class='ident'>execute_on</span>(<span class='ident'>environment</span>);
+        <span class='kw'>let</span> <span class='ident'>result</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>program</span>.<span class='ident'>evaluate_on</span>(<span class='ident'>environment</span>);
 
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>result</span>, <span class='ident'>Environment</span> {
             <span class='ident'>cockroach_location</span>: <span class='number'>0</span>,
@@ -238,7 +238,7 @@
         <span class='kw'>let</span> <span class='ident'>program</span>: <span class='ident'>Program</span> <span class='op'>=</span> <span class='ident'>Program</span>::<span class='ident'>Forward</span>(<span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>Program</span>::<span class='ident'>Stop</span>));
         <span class='kw'>let</span> <span class='ident'>environment</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>Environment</span>::<span class='ident'>new</span>(<span class='number'>5</span>);
 
-        <span class='kw'>let</span> <span class='ident'>result</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>program</span>.<span class='ident'>execute_on</span>(<span class='ident'>environment</span>);
+        <span class='kw'>let</span> <span class='ident'>result</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>program</span>.<span class='ident'>evaluate_on</span>(<span class='ident'>environment</span>);
 
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>result</span>, <span class='ident'>Environment</span> {
             <span class='ident'>cockroach_location</span>: <span class='number'>1</span>,
@@ -251,7 +251,7 @@
         <span class='kw'>let</span> <span class='ident'>program</span>: <span class='ident'>Program</span> <span class='op'>=</span> <span class='ident'>Program</span>::<span class='ident'>Backward</span>(<span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>Program</span>::<span class='ident'>Stop</span>));
         <span class='kw'>let</span> <span class='ident'>environment</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>Environment</span>::<span class='ident'>new</span>(<span class='number'>5</span>);
 
-        <span class='kw'>let</span> <span class='ident'>result</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>program</span>.<span class='ident'>execute_on</span>(<span class='ident'>environment</span>);
+        <span class='kw'>let</span> <span class='ident'>result</span>: <span class='ident'>Environment</span> <span class='op'>=</span> <span class='ident'>program</span>.<span class='ident'>evaluate_on</span>(<span class='ident'>environment</span>);
 
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>result</span>, <span class='ident'>Environment</span> {
             <span class='ident'>cockroach_location</span>: <span class='op'>-</span><span class='number'>1</span>,
