@@ -71,7 +71,7 @@ impl ScoreCard for Config {
         let program_length = program.length();
 
         let final_environment = program.evaluate_on(environment);
-        let food_distance = (final_environment.cockroach_location - final_environment.food_location).abs();
+        let food_distance = (final_environment.cockroach_location - final_environment.food_location).abs().pow(2);
 
         self.program_length_weight * program_length + self.food_distance_weight * food_distance
     }
@@ -94,6 +94,6 @@ mod test {
 
         let score = config.score(program, environment);
 
-        assert_eq!(score, 6 as Score);
+        assert_eq!(score, 26 as Score);
     }
 }
