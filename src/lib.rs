@@ -14,3 +14,4 @@ pub mod dsl;
 pub mod random;
 pub mod environment;
 pub mod evaluate;
+pub mod fitness;
