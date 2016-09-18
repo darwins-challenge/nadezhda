@@ -15,3 +15,4 @@ pub mod random;
 pub mod environment;
 pub mod evaluate;
 pub mod fitness;
+pub mod population;
