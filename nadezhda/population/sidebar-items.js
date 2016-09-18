@@ -1,0 +1,1 @@
+initSidebarItems({"type":[["Population","A Population is nothing more than a Vector of Programs"]]});
