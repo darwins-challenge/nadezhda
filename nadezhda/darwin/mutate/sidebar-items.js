@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["RandomDecision","A MutateDecision that decides randomly"]],"trait":[["Mutatable","Somethings can mutate"],["MutateDecision","Determines if a mutation should occur"]]});
