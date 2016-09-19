@@ -40,11 +40,11 @@ impl MutateDecision for RandomDecision {
 /// Somethings can mutate
 pub trait Mutatable {
     /// Returns a mutated variant of self
-    fn mutate(&self, decide: Box<MutateDecision>) -> Self;
+    fn mutate(&self, decide: &mut MutateDecision) -> Self;
 }
 
 impl Mutatable for Program {
-    fn mutate(&self, mut decide: Box<MutateDecision>) -> Program {
+    fn mutate(&self, mut decide: &mut MutateDecision) -> Program {
         match *self {
             Program::Forward(ref contained_program) => {
                 if decide.should_mutate() {
