@@ -87,9 +87,9 @@ mod tests {
     #[test]
     fn should_never_mutate() {
         let program: Program = Program::Forward(Box::new(Program::Stop));
-        let decision: TestDecision = TestDecision::NeverMutate;
+        let mut decision: TestDecision = TestDecision::NeverMutate;
 
-        let mutation = program.mutate(Box::new(decision));
+        let mutation = program.mutate(&mut decision);
 
         assert_eq!(mutation, Program::Forward(Box::new(Program::Stop)));
 
@@ -98,9 +98,9 @@ mod tests {
     #[test]
     fn should_always_mutate() {
         let program: Program = Program::Forward(Box::new(Program::Stop));
-        let decision: TestDecision = TestDecision::AlwaysMutate;
+        let mut decision: TestDecision = TestDecision::AlwaysMutate;
 
-        let mutation = program.mutate(Box::new(decision));
+        let mutation = program.mutate(&mut decision);
 
         assert_eq!(mutation, Program::Backward(Box::new(Program::Stop)));
 
