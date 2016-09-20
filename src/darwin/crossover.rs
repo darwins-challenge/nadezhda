@@ -84,13 +84,16 @@ impl Split for Program {
 }
 
 /// Create a child by crossing over two parents.
-pub fn crossover(mut rng: &mut rand::Rng, left: &Program, right: &Program) -> Program {
+pub fn crossover(mut rng: &mut rand::Rng, left: &Program, right: &Program) -> (Program, Program) {
     let left_range = Range::new(0, left.length());
     let right_range = Range::new(0, right.length());
     let left_cut_point = left_range.ind_sample(&mut rng);
     let right_cut_point = right_range.ind_sample(&mut rng);
 
-    left.take(left_cut_point, right.drop(right_cut_point))
+    (
+        left.take(left_cut_point, right.drop(right_cut_point)),
+        right.take(right_cut_point, left.drop(left_cut_point)),
+    )
 }
 
 #[cfg(test)]

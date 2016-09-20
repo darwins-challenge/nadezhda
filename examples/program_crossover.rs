@@ -51,9 +51,11 @@ fn main() {
 
     let mut count = 0;
     loop {
-        let crossover = crossover(&mut rng, &left, &right);
-        let finger_print = crossover.finger_print();
-        finger_prints.insert(finger_print);
+        let (left_child, right_child) = crossover(&mut rng, &left, &right);
+        let left_finger_print = left_child.finger_print();
+        let right_finger_print = right_child.finger_print();
+        finger_prints.insert(left_finger_print);
+        finger_prints.insert(right_finger_print);
         count += 1;
 
         if finger_prints.len() == 16 { break; }
