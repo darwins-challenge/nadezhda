@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["mutate","Mutate a program"]]});
+initSidebarItems({"mod":[["crossover","Crossover two programs"],["mutate","Mutate a program"]]});
