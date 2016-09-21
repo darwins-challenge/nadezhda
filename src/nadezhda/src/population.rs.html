@@ -87,6 +87,7 @@
 <span id="43">43</span>
 <span id="44">44</span>
 <span id="45">45</span>
+<span id="46">46</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! A population of individuals</span>
 <span class='doccomment'>//!</span>
@@ -117,6 +118,7 @@
 <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>grammar</span>::<span class='ident'>Program</span>;
 
 <span class='doccomment'>/// A Population is nothing more than a Vector of Programs</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Population</span>(<span class='kw'>pub</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Program</span><span class='op'>&gt;</span>);
 
 <span class='kw'>impl</span> <span class='ident'>Population</span> {

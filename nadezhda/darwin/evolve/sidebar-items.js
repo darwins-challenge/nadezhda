@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["succesion","Return the next generation of the population"]]});
