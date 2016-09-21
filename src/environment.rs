@@ -7,7 +7,7 @@
 
 
 /// The environment the cockroach finds herself
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct Environment {
     /// The location of the cockroach
     pub cockroach_location: i32,

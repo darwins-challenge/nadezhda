@@ -27,6 +27,7 @@ use rand;
 use super::grammar::Program;
 
 /// A Population is nothing more than a Vector of Programs
+#[derive(Debug)]
 pub struct Population(pub Vec<Program>);
 
 impl Population {
