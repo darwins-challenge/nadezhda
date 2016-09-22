@@ -20,7 +20,7 @@ pub fn succesion(environment: Environment, population: Population) -> Population
         .iter()
         .map(|program| (program.clone(), config.score(program.clone(), environment.clone())))
         .collect();
-    scored_last_generation.sort_by(|a,b| a.1.cmp(&b.1));
+    scored_last_generation.sort_by(|a,b| b.1.cmp(&a.1));
     let next_generation = scored_last_generation
         .iter()
         .map(|a| a.0.clone())
