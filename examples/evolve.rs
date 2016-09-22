@@ -21,8 +21,8 @@ fn survivors(population: Population, environment: Environment) -> Vec<Program> {
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let environment: Environment = Environment::new(5);
-    let mut last_population: Population = Population::new(5);
+    let environment: Environment = Environment::new(6);
+    let mut last_population: Population = Population::new(10);
 
     let mut generation_count = 0;
     while generation_count < 100 {
