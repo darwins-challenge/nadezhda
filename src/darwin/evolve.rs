@@ -25,23 +25,23 @@ pub fn succesion(mut rng: &mut rand::Rng, environment: Environment, population: 
         .collect();
     scored_last_generation.sort_by(|a,b| b.1.cmp(&a.1));
 
-    let mut next_generation: Vec<Program> = vec!();
+    let mut generation: Vec<Program> = vec!();
     for index in 0..2 {
         let program: Program = scored_last_generation[index].0.clone();
-        next_generation.push(program);
+        generation.push(program);
     }
     let index_range = Range::new(0, scored_last_generation.len());
-    while next_generation.len() < last_generation.len() {
+    while generation.len() < last_generation.len() {
         let left_index = index_range.ind_sample(&mut rng);
         let right_index = index_range.ind_sample(&mut rng);
         let left = scored_last_generation[left_index].0.clone();
         let right = scored_last_generation[right_index].0.clone();
         let (left_child, right_child) = crossover(&mut rng, &left, &right);
-        next_generation.push(left_child);
-        if next_generation.len() < last_generation.len() {
-            next_generation.push(right_child);
+        generation.push(left_child);
+        if generation.len() < last_generation.len() {
+            generation.push(right_child);
         }
     }
 
-    Population(next_generation)
+    Population(generation)
 }
