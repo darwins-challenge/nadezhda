@@ -14,7 +14,6 @@ fn main() {
 
     let mut generation_count = 0;
     while generation_count < 100 {
-        println!("[{}]", generation_count);
         let next_population = succesion(&mut rng, environment.clone(), last_population.clone());
         let Population(generation) = next_population.clone();
         let survivors: Vec<Program> = generation
@@ -29,6 +28,6 @@ fn main() {
         last_population = next_population;
         generation_count += 1;
     }
-    println!("{:?}", last_population);
+    println!("{} {:?}", generation_count, last_population);
 
 }
