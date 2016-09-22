@@ -11,6 +11,7 @@ use super::super::population::Population;
 use super::super::environment::Environment;
 use super::super::fitness::{Config, ScoreCard, Score};
 use super::crossover::crossover;
+use super::mutate::{RandomDecision, Mutatable};
 
 /// Return the next generation of the population
 pub fn succesion(mut rng: &mut rand::Rng, environment: Environment, population: Population) -> Population {
@@ -43,5 +44,11 @@ pub fn succesion(mut rng: &mut rand::Rng, environment: Environment, population: 
         }
     }
 
-    Population(generation)
+    let mut random_decision = RandomDecision::new(0.1);
+    let next_generation: Vec<Program> = generation
+        .iter()
+        .map(|program| program.mutate(&mut random_decision))
+        .collect();
+
+    Population(next_generation)
 }
