@@ -118,7 +118,7 @@
 <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>grammar</span>::<span class='ident'>Program</span>;
 
 <span class='doccomment'>/// A Population is nothing more than a Vector of Programs</span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Clone</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Population</span>(<span class='kw'>pub</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Program</span><span class='op'>&gt;</span>);
 
 <span class='kw'>impl</span> <span class='ident'>Population</span> {
