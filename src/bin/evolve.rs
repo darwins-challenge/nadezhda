@@ -1,6 +1,9 @@
 extern crate rand;
 extern crate nadezhda;
 
+use std::env;
+use std::process;
+
 use nadezhda::grammar::Program;
 use nadezhda::environment::Environment;
 use nadezhda::population::Population;
@@ -20,9 +23,32 @@ fn survivors(population: Population, environment: Environment) -> Vec<Program> {
 }
 
 fn main() {
+    if env::args().len() < 3 {
+        println!("Usage: evolve FOOD POPULATION");
+        process::exit(1);
+    }
+
+    let food_string: String = env::args().nth(1).unwrap();
+    let food: i32 = match i32::from_str_radix(&food_string, 10) {
+        Ok(value) => value,
+        Err(_) => {
+            println!("FOOD argument is not an integer");
+            process::exit(2);
+        }
+    };
+
+    let population_count_string: String = env::args().nth(2).unwrap();
+    let population_count: i32 = match i32::from_str_radix(&population_count_string, 10) {
+        Ok(value) => value,
+        Err(_) => {
+            println!("POPULATION argument is not an integer");
+            process::exit(3);
+        }
+    };
+
     let mut rng = rand::thread_rng();
-    let environment: Environment = Environment::new(6);
-    let mut last_population: Population = Population::new(10);
+    let environment: Environment = Environment::new(food);
+    let mut last_population: Population = Population::new(population_count);
 
     let mut generation_count = 0;
     while generation_count < 100 {
