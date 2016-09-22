@@ -9,3 +9,7 @@ rand = "0.3"
 [lib]
 name = "nadezhda"
 path = "src/lib.rs"
+
+[[bin]]
+name = "evolve"
+path = "src/bin/evolve.rs"
